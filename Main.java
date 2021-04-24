@@ -15,8 +15,10 @@ public class Main{
 
         System.out.println("Bienvenido al sistema automatizado de servicio de hospital \n Ingrese el nombte de su documento .txt para obtener los datos de los pacientes");
         docname = scan.nextLine();
+    
         
         try {
+            //pre: documento con los datos de los pacientes revueltos y sin identificación
             //post: operaciones realizadas según lo descrito en el txt
               File myObj = new File(docname+".txt");
               Scanner myReader = new Scanner(myObj);
@@ -37,6 +39,9 @@ public class Main{
         
         System.out.println("El orden en que deben ser atendidos los pacientes es el siguiente: ");
         while(!Listado.isEmpty()){
+            //Se crea un nuevo objeto de tipo paciente para poder colocar la información en el formato solicitado
+            //pre: información dentro del PQ, con formato  ==> prioridad, síntomas, nombre
+            //post: información impresa con formato ==> nombrem, síntomas, prioridad
             paciente pc2 = new paciente(Listado.poll(),2);
             System.out.println(pc2.completo(2));
         }

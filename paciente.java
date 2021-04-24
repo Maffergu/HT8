@@ -39,9 +39,14 @@ public class paciente {
     }
 
     public String completo(int tipo){
+        //pre: datos separados por tipo
+        //post: información ordenada según sea requerida
         if(tipo == 1){
+            //Se coloca primero la letra que corresponde a la prioridad para que se ordene de manera automática
             retorno = PrioLevel+", "+Sintom+", "+Name;
         }else{
+            //Se ordena con el formato Nombre, Síntomas, Prioridad
+            //Con este formato debe ser imprimida la información para mostrar al usuario
             retorno = Name+", "+Sintom+", "+PrioLevel;
         }
         
