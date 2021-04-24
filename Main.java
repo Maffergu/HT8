@@ -9,7 +9,8 @@ public class Main{
     public static void main(String[] args){
         Scanner scan = new Scanner(System.in);
         String docname = ""; 
-        PriorityQueue<String> Listado = new PriorityQueue<>();
+        VectorHeap<String> Listado = new VectorHeap<>() ;
+        
         
 
 
@@ -28,6 +29,7 @@ public class Main{
                 //hacer la operación de la línea actual
                 paciente pc = new paciente(data,1);
                 Listado.add(pc.completo(1));
+                
               }
               myReader.close();
             } catch (FileNotFoundException e) {
@@ -39,12 +41,14 @@ public class Main{
         
         System.out.println("El orden en que deben ser atendidos los pacientes es el siguiente: ");
         while(!Listado.isEmpty()){
-            //Se crea un nuevo objeto de tipo paciente para poder colocar la información en el formato solicitado
-            //pre: información dentro del PQ, con formato  ==> prioridad, síntomas, nombre
-            //post: información impresa con formato ==> nombrem, síntomas, prioridad
-            paciente pc2 = new paciente(Listado.poll(),2);
-            System.out.println(pc2.completo(2));
-        }
+          //Se crea un nuevo objeto de tipo paciente para poder colocar la información en el formato solicitado
+          //pre: información dentro del PQ, con formato  ==> prioridad, síntomas, nombre
+          //post: información impresa con formato ==> nombrem, síntomas, prioridad
+          paciente pc2 = new paciente(Listado.getFirst(),2);
+          Listado.remove();
+          System.out.println(pc2.completo(2));
+      }
+        
        
     }
 }
